@@ -1,4 +1,208 @@
-
-h1 {
-    color: red;
+.title {
+    color: #000;
+    font-size: 77px;
+    line-height: 65px;
+    font-family: 'GlossyMagazine regular';
+    font-weight: 500;
+    overflow: visible;
 }
+
+.title__wrapp {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.title__footnote {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    font-size: 18px;
+}
+
+.title__footnote--post {
+    color: #00DE24;
+}
+
+.title__footnote--design {
+    color: #FF33D2;
+}
+
+.title__footnote--tangle {
+    color: #FF6B00;
+}
+
+.title__footnote--locations {
+    color: #FF0000;
+}
+
+.title__card {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    width: 300px;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: normal;
+    overflow: visible;
+    z-index: 10;
+    border-radius: 30px;
+    padding: 15px 20px;
+}
+
+.title__card--post,
+.footnotes__card--post {
+    color: #00DE24;
+    font-family: 'Edition numerical';
+    box-shadow: 0px 10px 20px #60C470;
+}
+
+.title__card--design,
+.footnotes__card--design {
+    color: #FF33D2;
+    font-family: 'Edition Contextual';
+    box-shadow: 0px 10px 20px #FF33D2;
+}
+
+.title__card--tangle,
+.footnotes__card--tangle {
+    color: #FF6B00;
+    font-family: 'Edition Geometrical';
+    box-shadow: 0px 10px 20px #FF6B00;
+}
+
+.title__card--locations,
+.footnotes__card--locations {
+    color: #FF0000;
+    font-family: 'Edition Scriptual';
+    box-shadow: 0px 10px 20px #FF0000 ;
+}
+
+.title__card p {
+    display: inline-block;
+    word-wrap: break-word;
+}
+
+.title__wrapp:hover .title__card{
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s ease-in-out;
+}
+
+.footnotes {
+    padding: 20px;
+}
+
+.footnotes__card {
+    height: auto;
+    width: 100%;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: normal;
+    border-radius: 30px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+
+.info {
+    font-family: 'AmbiantBook';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000;
+}
+
+.social {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.social__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    font-family: 'AmbiantBook';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000;
+    border-radius: 25px;
+    border: 1px solid #000;
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.social__button:hover {
+    color: #fff;
+    background-color: #000;
+    transition: 0.2s ease-in-out;
+}
+
+.social__button--large {
+    padding: 0 25px;
+}
+
+.social__button--small {
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+}
+
+.logos {
+    max-width: 100%;
+    width: 100%;
+}
+
+.logos__divider {
+    height: 1px;
+    width: 100%;
+    background-color: #000;
+}
+
+.logos__partners {
+
+}
+
+.logos__supporters {
+
+}
+
+.logos__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.logos__container--supporters {
+
+}
+
+.logos__img {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Ipad */
+@media screen and (min-width: 767px) {
+    .title__card {
+        display: block;
+    }
+    .footnotes {
+        display: none;
+    }
+}
+/* Desktop */

@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'GlossyMagazine regular';
+    src: url('../assets/fonts/Glossy_woff/GlossyMagazine-RegularCondensedWeb.woff') format("woff"),
+    url('../assets/fonts/Glossy_woff/GlossyMagazine-RegularCondensedWeb.woff2') format("woff2");
+}
+
+@font-face {
+    font-family: 'AmbiantBook';
+    src: url('../assets/fonts/Ambiant_woff/Book/Ambiant-Book.woff') format("woff"),
+    url('../assets/fonts/Ambiant_woff/Book/Ambiant-Book.woff2') format("woff2"),
+    url('../assets/fonts/Ambiant_woff/Book/Ambiant-Book.eot') format("eot");
+}
+
+@font-face {
+    font-family: 'Edition Asymmetrical';
+    src: url('../assets/fonts/Edition_woff/Asymmetrical/Edition-Asymmetrical-50.woff') format("woff");
+}
+
+@font-face {
+    font-family: 'Edition Contextual';
+    src: url('../assets/fonts/Edition_woff/Contextual/Edition-Contextual-50.woff') format("woff");
+}
+
+
+@font-face {
+    font-family: 'Edition Geometrical';
+    src: url('../assets/fonts/Edition_woff/Geometrical/Edition-Geometrical-50.woff') format("woff");
+}
+
+@font-face {
+    font-family: 'Edition numerical';
+    src: url('../assets/fonts/Edition_woff/Numerical/Edition-Numerical-50.woff') format("woff");
+}
+
+@font-face {
+    font-family: 'Edition Scriptual';
+    src: url('../assets/fonts/Edition_woff/Scriptual/Edition-Scriptual-50.woff') format("woff");
+}
