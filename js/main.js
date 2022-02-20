@@ -16,12 +16,17 @@ window.onload = function() {
             // Adding EventListener
             footnote.addEventListener("click", (e) => {
                 const parent = e.target.parentNode;
+                console.log('parent', parent)
                 const footnote = parent.querySelector('.title__card')
                 if (footnote) {
                     if (!footnote.classList.contains("title__card--open")) {
                         document.querySelectorAll('.title__card--open').forEach((item) => {
                             item.classList.remove('title__card--open')
                         })
+                        document.querySelectorAll('.title__wrapp--open').forEach((item) => {
+                            item.classList.remove('title__wrapp--open')
+                        })
+                        parent.classList.add('title__wrapp--open')
                         footnote.classList.add('title__card--open')
                     }
                 }
@@ -34,6 +39,7 @@ window.onload = function() {
                 if (parent) {
                     if (parent.classList.contains("title__card--open")) {
                         parent.classList.remove('title__card--open')
+                        parent.parentNode.classList.remove('title__wrapp--open')
                     }
                 }
             }, false);

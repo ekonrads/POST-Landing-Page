@@ -13,10 +13,11 @@ section {
 }
 
 .title {
+    display: unset;
+    width: 100%;
     max-width: 952px;
     color: #000;
-    font-size: 77px;
-    line-height: 65px;
+    font-size: 0;
     font-family: 'GlossyMagazine regular';
     font-weight: 500;
     overflow: visible;
@@ -29,6 +30,13 @@ section {
     overflow: visible;
 }
 
+.title__extra,
+.title__wrapp {
+    font-size: 77px;
+    line-height: 66px;
+    letter-spacing: -0.07em;
+}
+
 .title__underline {
     text-decoration: underline;
     text-decoration-thickness: 2px;
@@ -37,24 +45,35 @@ section {
 
 .title__footnote {
     position: absolute;
-    top: -20px;
-    right: 0;
+    top: 0;
+    right: -10px;
     font-size: 18px;
+    line-height: 18px;
+    font-family: 'AmbiantBook';
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -0.07em;
+    color: #000;
+    transition: 0.3s ease-in-out;
 }
 
 .title__footnote--post {
+    /* right: -16px; */
+}
+
+.title__wrapp--open .title__footnote--post {
     color: #00DE24;
 }
 
-.title__footnote--design {
+.title__wrapp--open .title__footnote--design {
     color: #FF33D2;
 }
 
-.title__footnote--tangle {
+.title__wrapp--open .title__footnote--tangle {
     color: #FF6B00;
 }
 
-.title__footnote--locations {
+.title__wrapp--open .title__footnote--locations {
     color: #FF0000;
 }
 
@@ -72,13 +91,14 @@ section {
     white-space: normal;
     overflow: visible;
     z-index: 10;
-    border-radius: 30px;
+    border-radius: 20px;
     padding: 20px;
     pointer-events: none;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    letter-spacing: normal;
 }
 
 .title__card--open {
@@ -150,6 +170,7 @@ section {
     font-size: 25px;
     line-height: 30px;
     color: #000;
+    margin-top: 1.5em;
 }
 
 .social {
@@ -167,7 +188,7 @@ section {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 20px;
     color: #000;
     border-radius: 25px;
     border: 1px solid #000;
@@ -176,6 +197,7 @@ section {
     cursor: pointer;
     margin-bottom: 50px;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 .social__button:hover {
@@ -185,21 +207,32 @@ section {
 }
 
 .social__button--large {
-    padding: 0 15px;
+    padding: 0 15px 2px;
 }
 
 .social__button--small {
     border-radius: 50%;
     height: 38px;
     width: 38px;
+    font-size: 15px;
+    line-height: 18px;
 }
 
 .logos {
     max-width: 100%;
     width: 100%;
-    font-family: 'Ambiant-Book';
+    font-family: 'AmbiantBook';
     font-size: 16px;
     line-height: 21px;
+}
+
+.logos p {
+    font-family: 'AmbiantBook';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 9px 0 1em;
 }
 
 .logos__divider {
@@ -209,7 +242,7 @@ section {
 }
 
 .logos__partners {
-
+    margin-bottom: 28px;
 }
 
 .logos__supporters {
@@ -217,8 +250,7 @@ section {
     grid-template-areas: 
     "text . artLogo"
     "nodiskLogo . artLogo";
-    grid-template-columns: 2fr 0.5fr 1fr;
-    
+    grid-template-columns: 198px auto 70px;
 }
 
 .logos__text {
@@ -226,6 +258,8 @@ section {
 }
 
 .logos__art-logo {
+    display: flex;
+    align-items: flex-end;
     grid-area: artLogo;
 }
 
@@ -235,7 +269,8 @@ section {
 
 .logos__container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 134px 78px 89px;
+    justify-content: space-between;
 }
 
 .logos__container--supporters {
@@ -256,6 +291,18 @@ section {
     .title__wrapp:hover .title__card{
         opacity: 1;
         transition: 0.3s ease-in-out;
+    }
+    .title__wrapp:hover .title__footnote--post {
+        color: #00DE24;
+    }
+    .title__wrapp:hover .title__footnote--design {
+        color: #FF33D2;
+    }
+    .title__wrapp:hover .title__footnote--tangle {
+        color: #FF6B00;
+    }
+    .title__wrapp:hover .title__footnote--locations {
+        color: #FF0000;
     }
     .title__close {
         display: none;
