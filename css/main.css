@@ -1,8 +1,20 @@
 html,
 section {
+    position: relative;
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
+    z-index: 1;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 0;
 }
 
 .main {
@@ -13,9 +25,8 @@ section {
 }
 
 .title {
-    display: unset;
     width: 100%;
-    max-width: 952px;
+    max-width: 881px;
     color: #000;
     font-size: 0;
     font-family: 'GlossyMagazine regular';
@@ -171,6 +182,7 @@ section {
     line-height: 30px;
     color: #000;
     margin-top: 1.5em;
+    z-index: 0;
 }
 
 .social {
@@ -208,6 +220,13 @@ section {
 
 .social__button--large {
     padding: 0 15px 2px;
+}
+
+.social__smal-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
 }
 
 .social__button--small {
@@ -284,10 +303,89 @@ section {
 
 /* Ipad */
 @media screen and (min-width: 767px) {
-
+    .main__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+    }
+    .title__extra,
+    .title__wrapp {
+        font-size: 127px;
+        line-height: 100%;
+    }
+    .info {
+        margin-top: 0;
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .info-social {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .social__smal-buttons {
+        width: 180px;
+    }
+    .social__button--large {
+        height: 46px;
+        font-size: 25px;
+        line-height: 30px;
+        padding: 0 30px 4px;
+    }
+    .social__button--small {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .logos {
+        display: grid;
+        grid-template-areas: 
+        "line line line"
+        "partners mobLine supporters";
+        grid-template-columns: 1.75fr 1fr 1fr;
+    }
+    .logos__divider--mob {
+        display: none;
+        grid-area: mobLine;
+    }
+    .logos__divider--desk {
+        grid-area: line;
+    }
+    .logos__partners {
+        grid-area: partners;
+        margin-bottom: 0;
+    }
+    .logos__container {
+        grid-template-columns: 203px 120px 136px;
+     }
+    .logos__supporters {
+        grid-area: supporters;
+        grid-template-columns: 231px auto 71px;
+        margin-bottom: 40px;
+    }
+    .logos p {
+        font-size: 16px;
+        line-height: 21px;
+    }
+    .logos__nordisk-logo {
+        display: flex;
+        align-items: flex-end;
+    }
 }
 /* Desktop */
 @media screen and (min-width: 1200px) {
+    .main {
+        padding-bottom: 0;
+    }
+    .title {
+        max-width: 1118px;
+    }
+    .title__extra,
+    .title__wrapp {
+        font-size: 153.326px;
+    }
     .title__wrapp:hover .title__card{
         opacity: 1;
         transition: 0.3s ease-in-out;
@@ -306,5 +404,31 @@ section {
     }
     .title__close {
         display: none;
+    }
+    .info {
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .social__button--large {
+        height: 46px;
+        font-size: 32px;
+        line-height: 38px;
+        padding: 0 20px 4px 45px;
+    }
+    .social__button--small {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .logos {
+        margin-top: 15px;
+    }
+    .logos__container {
+        grid-template-columns: 245px 144px 164px;
+     }
+    .logos__supporters {
+        grid-template-columns: 278px auto 90px;
+        margin-bottom: 40px;
     }
 }
