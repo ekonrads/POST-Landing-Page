@@ -1,4 +1,19 @@
+html,
+section {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.main {
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
 .title {
+    max-width: 952px;
     color: #000;
     font-size: 77px;
     line-height: 65px;
@@ -18,7 +33,6 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 5px;
-    /* border-bottom: 2px solid #000; */
 }
 
 .title__footnote {
@@ -46,7 +60,7 @@
 
 .title__card {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     height: auto;
     width: 300px;
@@ -59,8 +73,12 @@
     overflow: visible;
     z-index: 10;
     border-radius: 30px;
-    padding: 15px 20px;
+    padding: 20px;
     pointer-events: none;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title__card--open {
@@ -100,17 +118,13 @@
 .title__card p {
     display: inline-block;
     word-wrap: break-word;
+    margin: 0;
 }
 
 .title__close {
     display: block;
     margin-top: 1.5em;
 }
-
-/* .title__wrapp:hover .title__card{
-    opacity: 1;
-    transition: 0.3s ease-in-out;
-} */
 
 .footnotes {
     padding: 20px;
@@ -160,7 +174,8 @@
     background-color: #fff;
     transition: 0.2s ease-in-out;
     cursor: pointer;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    text-decoration: none;
 }
 
 .social__button:hover {
@@ -170,7 +185,7 @@
 }
 
 .social__button--large {
-    padding: 0 25px;
+    padding: 0 15px;
 }
 
 .social__button--small {
@@ -182,6 +197,9 @@
 .logos {
     max-width: 100%;
     width: 100%;
+    font-family: 'Ambiant-Book';
+    font-size: 16px;
+    line-height: 21px;
 }
 
 .logos__divider {
@@ -195,7 +213,24 @@
 }
 
 .logos__supporters {
+    display: grid;
+    grid-template-areas: 
+    "text . artLogo"
+    "nodiskLogo . artLogo";
+    grid-template-columns: 2fr 0.5fr 1fr;
+    
+}
 
+.logos__text {
+    grid-area: text;
+}
+
+.logos__art-logo {
+    grid-area: artLogo;
+}
+
+.logos__nordisk-logo {
+    grid-area: nodiskLogo;
 }
 
 .logos__container {
@@ -214,11 +249,15 @@
 
 /* Ipad */
 @media screen and (min-width: 767px) {
-    .title__card {
-        display: block;
+
+}
+/* Desktop */
+@media screen and (min-width: 1200px) {
+    .title__wrapp:hover .title__card{
+        opacity: 1;
+        transition: 0.3s ease-in-out;
     }
-    .footnotes {
+    .title__close {
         display: none;
     }
 }
-/* Desktop */
