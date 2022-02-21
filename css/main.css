@@ -456,7 +456,7 @@ canvas {
         grid-template-columns: 245px 144px 164px;
      }
     .logos__supporters {
-        grid-template-columns: 278px auto 90px;
+        grid-template-columns: 278px auto 70px;
         margin-bottom: 40px;
     }
 }
