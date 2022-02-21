@@ -1,5 +1,5 @@
 var canvas, ctx;
-var n = 80,a=0;
+var n = 100,a=0;
 // var p=[10,10,10,10,10,10];
 // Length of each segment of the snake
 var segLength = 15;
@@ -19,7 +19,6 @@ window.onload = function() {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 
     // Adding eventlisteners to footnotes
-    console.log('vw', vw)
     const footnotes = document.querySelectorAll(".title__wrapp");
     if (vw < 1200) {
         footnotes.forEach((footnote) => {
@@ -71,15 +70,15 @@ window.onload = function() {
         //         } else if (card.classList.contains("title__footnote--design")) {
         //             segColor = 'rgba(255, 51, 210, 1)'
         //         } else if (card.classList.contains("title__footnote--tangle")) {
-        //             segColor = '#FF6B00'
+        //             segColor = '#FF9900c'
         //         } else if (card.classList.contains("title__footnote--locations")) {
         //             segColor = '#FF0000'
         //         }
         //         console.log('segColor', segColor)
         //     }, true);
         // })
-        init();
-    }
+      }
+      init();
     function init() {
         const mainBody = document.querySelector('html')
            ctx = canvas.getContext('2d');
@@ -96,10 +95,64 @@ window.onload = function() {
            // necessary to take into account CSS boundaries
            var rect = canvas.getBoundingClientRect();
               p = ctx.getImageData(evt.clientX - rect.left, evt.clientY - rect.top, 1, 1).data;
-           return {
-              x: evt.clientX - rect.left,
-              y: evt.clientY - rect.top
-           };
+
+            var mouseStoped = false
+            if (mouseStoped) {
+              // var xdir = 10; var ydir = 10;
+              randx = Math.random(); randy = Math.random();
+              // if (randx > 0.95) {
+              //     if (xdir < 0) xdir = (xdir+((Math.random()*1.5) - 1))/2;
+              //     else if (xdir > 0) xdir = (xdir+((Math.random()*1.5) - 0.5))/2;
+              //     else xdir = (Math.random()*1.5) - 0.75;
+              // }
+
+              // if (randy > 0.95) {
+              //     if (ydir < 0) ydir = (ydir+((Math.random()*1.5) - 1))/2;
+              //     else if (ydir > 0) ydir = (ydir+((Math.random()*1.5) - 0.5))/2;
+              //     else ydir = (Math.random()*1.5) - 0.75;
+              // }
+
+              // context.lineTo(rect.left+xdir, rect.top+ydir);
+              // context.beginPath();
+              // context.moveTo(rect.left,rect.top);
+              // context.lineTo(rect.left+xdir, rect.top+ydir);
+              // context.stroke();
+
+              // x: xdir; y1 += ydir;
+              randx = randx * 10
+              randy = randy * 10
+              // if (randx > 0.3) {
+              //   randx += 100
+              // } else {
+              //   randx += 40
+              // }
+
+              // if (randy > 0.3) {
+              //   randy += 100
+              // } else {
+              //   randy += 40
+              // }
+              // console.log('x--', x)
+              // console.log('y--', y)
+              // console.log('x: ', randx - x)
+              // console.log('Y: ', randy - y)
+              randx = parseFloat(randx).toFixed(0)
+              randy = parseFloat(randy).toFixed(0)
+              console.log('randx', randx)
+              console.log('randy', randy)
+              console.log('x[randx]', x[randx])
+              return {
+                x: x[randx],
+                y: y[randy]
+             };
+            } else {
+              return {
+                 x: evt.clientX - rect.left,
+                 y: evt.clientY - rect.top
+              };
+            }
+
+
         }
         
         function animate() {
@@ -166,7 +219,7 @@ const changeSnakeColor = (item) => {
   } else if (item === 'design') {
     snakeColor = '#FF33D2'
   } else if (item === 'tangle') {
-    snakeColor = '#FF6B00'
+    snakeColor = '#FF9900'
   } else if (item === 'locations') {
     snakeColor = '#FF0000'
   }
