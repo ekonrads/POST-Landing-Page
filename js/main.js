@@ -1,5 +1,5 @@
 var canvas, ctx;
-var n = 60,a=0;
+var n = 80,a=0;
 // var p=[10,10,10,10,10,10];
 // Length of each segment of the snake
 var segLength = 15;
@@ -78,8 +78,8 @@ window.onload = function() {
                 console.log('segColor', segColor)
             }, true);
         })
+        init();
     }
-    // init();
 };
 
 function init() {
