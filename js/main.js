@@ -1,10 +1,24 @@
 var canvas, ctx;
-var n = 100,a=0;
+var n = 100,a=1;
 // var p=[10,10,10,10,10,10];
 // Length of each segment of the snake
 var segLength = 15;
 var snakeColor;
 var segColor;
+
+ // Get screen height & width
+ const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+ const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+// AutoDraw 
+var firstLoop = true
+var posLoop = 0
+var posInnerLoop = 0
+// var xPos = [vw*0.1, vw*0.25, vw*0.50, vw*0.75, vw]
+// var yPos = [vh*0.1, vh*0.25, vh*0.50, vh*0.75, vh]
+console.log('vw*0.25', vw*0.25)
+ var xPos = [0, vw*0.25, vw*0.75, vw*0.60, vw*0.15, vw*0.25, vw*0.65, vw*0.75, 0]
+var yPos = [vh*0.15, vh*0.55, vh*0.60, vh*0.15, vh*0.25, vh*0.60, vh*0.95, vh*0.15, 0]
 
 // Arrays of x,y positions of each coordinate system 
 // one for each segment
@@ -14,10 +28,30 @@ var y = Array.apply(null, Array(n)).map(Number.prototype.valueOf,0);
 var mousePos;
 var canvas = document.getElementById("snake");
 
+var idleTime = 0;
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 4) { // 5 sec
+        a = 1
+    }
+}
 window.onload = function() {
-    // Get screen width
-    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
 
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    console.log('helloooo', )
+    a=1
+  }else{
+    a=0
+    var idleInterval = setInterval(timerIncrement, 1000);
+    document.addEventListener('mousemove', e => {
+      idleTime = 0;
+      a=0
+    })
+    document.addEventListener('keydown', function(e) {
+      idleTime = 0;
+      a=0
+    });
+  }
     // Adding eventlisteners to footnotes
     const footnotes = document.querySelectorAll(".title__wrapp");
     if (vw < 1200) {
@@ -80,84 +114,30 @@ window.onload = function() {
       }
       init();
     function init() {
-        const mainBody = document.querySelector('html')
-           ctx = canvas.getContext('2d');
-           segColor = "rgba(95, 167, 243, 255)"
-           mainBody.addEventListener('mousemove', function (evt) {
-            mousePos = getMousePos(mainBody, evt);
-          }, true);
-          
-          // starts animation
-          requestAnimationFrame(animate);
-        }
+      const mainBody = document.querySelector('html')
+      ctx = canvas.getContext('2d');
+      
+      mainBody.addEventListener('mousemove', function (evt) {
+        mousePos = getMousePos(mainBody, evt);
+      }, true);
+        
+        // starts animation
+      requestAnimationFrame(animate);
+    }
         
         function getMousePos(canvas, evt) {
-           // necessary to take into account CSS boundaries
-           var rect = canvas.getBoundingClientRect();
-              p = ctx.getImageData(evt.clientX - rect.left, evt.clientY - rect.top, 1, 1).data;
-
-            var mouseStoped = false
-            if (mouseStoped) {
-              // var xdir = 10; var ydir = 10;
-              randx = Math.random(); randy = Math.random();
-              // if (randx > 0.95) {
-              //     if (xdir < 0) xdir = (xdir+((Math.random()*1.5) - 1))/2;
-              //     else if (xdir > 0) xdir = (xdir+((Math.random()*1.5) - 0.5))/2;
-              //     else xdir = (Math.random()*1.5) - 0.75;
-              // }
-
-              // if (randy > 0.95) {
-              //     if (ydir < 0) ydir = (ydir+((Math.random()*1.5) - 1))/2;
-              //     else if (ydir > 0) ydir = (ydir+((Math.random()*1.5) - 0.5))/2;
-              //     else ydir = (Math.random()*1.5) - 0.75;
-              // }
-
-              // context.lineTo(rect.left+xdir, rect.top+ydir);
-              // context.beginPath();
-              // context.moveTo(rect.left,rect.top);
-              // context.lineTo(rect.left+xdir, rect.top+ydir);
-              // context.stroke();
-
-              // x: xdir; y1 += ydir;
-              randx = randx * 10
-              randy = randy * 10
-              // if (randx > 0.3) {
-              //   randx += 100
-              // } else {
-              //   randx += 40
-              // }
-
-              // if (randy > 0.3) {
-              //   randy += 100
-              // } else {
-              //   randy += 40
-              // }
-              // console.log('x--', x)
-              // console.log('y--', y)
-              // console.log('x: ', randx - x)
-              // console.log('Y: ', randy - y)
-              randx = parseFloat(randx).toFixed(0)
-              randy = parseFloat(randy).toFixed(0)
-              console.log('randx', randx)
-              console.log('randy', randy)
-              console.log('x[randx]', x[randx])
-              return {
-                x: x[randx],
-                y: y[randy]
-             };
-            } else {
-              return {
-                 x: evt.clientX - rect.left,
-                 y: evt.clientY - rect.top
-              };
-            }
-
-
+          // necessary to take into account CSS boundaries
+          var rect = canvas.getBoundingClientRect();
+          p = ctx.getImageData(evt.clientX - rect.left, evt.clientY - rect.top, 1, 1).data;
+          return {
+              x: evt.clientX - rect.left,
+              y: evt.clientY - rect.top
+          };
         }
-        
+        var storeX = vw/2
+        var storeY = vh/2
         function animate() {
-         if(a==0)
-          {
+        if(a==0) {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           // draw the snake, only when the mouse entered at
           if(mousePos !== undefined) {
@@ -165,7 +145,46 @@ window.onload = function() {
              drawSnake(mousePos.x, mousePos.y);
           }
           requestAnimationFrame(animate);
+        } else {
+            let tempX, tempY, lastPos
+            if (posLoop > 0) {
+              lastPos = posLoop - 1
+            } else {
+              lastPos = xPos.length - 1
+            }
+            tempX = (((xPos[posLoop] - xPos[lastPos]) / 20) * posInnerLoop) + xPos[lastPos]
+            tempY = (((yPos[posLoop] - yPos[lastPos]) / 20) * posInnerLoop) + yPos[lastPos]
+
+            if (posInnerLoop < 20) {
+              posInnerLoop++
+            } else {
+              if (xPos.length - 1 > posLoop) {
+                posLoop++
+              } else {
+                posLoop = 0
+              }
+              posInnerLoop = 0
+            }
+            
+            tempX = Math.abs(parseFloat(tempX).toFixed(0))
+            tempY = parseFloat(tempY).toFixed(0)
+            tempY = Math.abs(tempY)
+            firstLoop = false
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawSnake(tempX, tempY)
+            setTimeout(() => {
+              requestAnimationFrame(animate);
+            }, 75)
           }
+        }
+
+        function getRandomArbitrary(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+        function getRandomInt(min, max) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min + 1)) + min;
         }
         
         function drawSnake(posX, posY) {
