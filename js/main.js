@@ -16,8 +16,7 @@ var posLoop = 0
 var posInnerLoop = 0
 // var xPos = [vw*0.1, vw*0.25, vw*0.50, vw*0.75, vw]
 // var yPos = [vh*0.1, vh*0.25, vh*0.50, vh*0.75, vh]
-console.log('vw*0.25', vw*0.25)
- var xPos = [0, vw*0.25, vw*0.75, vw*0.60, vw*0.15, vw*0.25, vw*0.65, vw*0.75, 0]
+var xPos = [0, vw*0.25, vw*0.75, vw*0.60, vw*0.15, vw*0.25, vw*0.65, vw*0.75, 0]
 var yPos = [vh*0.15, vh*0.55, vh*0.60, vh*0.15, vh*0.25, vh*0.60, vh*0.95, vh*0.15, 0]
 
 // Arrays of x,y positions of each coordinate system 
@@ -42,6 +41,8 @@ window.onload = function() {
     a=1
   }else{
     a=0
+    xPos = [vw*0.25, vw*0.25, vw*0.75, vw*0.60, vw*0.15, vw*0.25, vw*0.65, vw*0.75]
+    yPos = [vh*0.15, vh*0.55, vh*0.60, vh*0.15, vh*0.25, vh*0.60, vh*0.95, vh*0.15]
     var idleInterval = setInterval(timerIncrement, 1000);
     document.addEventListener('mousemove', e => {
       idleTime = 0;
